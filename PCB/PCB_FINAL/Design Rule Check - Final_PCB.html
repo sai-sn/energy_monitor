@@ -1,0 +1,630 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD20\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">21/10/2020</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">12:29:57 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc" class="file"><acronym title="C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc">C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">94</td></tr>
+</table>
+</td>
+</table><a name="ID4OJCGZWNOKXFEBYZENM2KGOZDHBWJPLSP3XCCWG1R3GRN2U50QKG"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4CRL4DHBNPH3ERRAQ1EBEKZFIPM402JM5UR01KICPY41TPZ3HSC">Clearance Constraint (Gap=0.5mm) (All),(All)</a></td>
+<td class="column2">16</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRZ5SLDLMEGEVE2JNNGVNR0M5SJTQW0GCOZARM1LLQYFHNFJHHMEH">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">16</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID40EHAOCMUHCFLADRGLA5CZ01UPWGW5SOVCUF2DIU3TI4BMEPLRYH">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">6</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDCKPMFIKV2VIFBPGEAEVO1NVZFOXIE2JSH1NVYXKVRXK4HKR02VBH">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLJ1BJQMUVASNBXT3QTTTSTVQK2NXDICW2025IBO32CCKCTZ4QXF">Width Constraint (Min=0.5mm) (Max=10mm) (Preferred=1mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4BQTOF1HLRY0INQYVWE5WSL0MCETECJH5E3WC2GSLSMMI1RW0GHD">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRDP2MF0BSOGLJQWEKQBT3CBQHXEKQM2VZWOUHPXNDNWINNPMNKH">Hole Size Constraint (Min=0.5mm) (Max=10mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDE2IZXNESTKBHD2RJJ30GNYNCRGN1TDOHPFLA25L2XEN3EIESCRNC">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1PLRELIKZLPLPQHOG0IWY2YY3HA3LZIXDWCEXEMN2NQ3FPQWE0YN">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDC5DAYC21ZZESKZIYH5ZGGZ5AGICY0BIFIDSJUNLAGY4X2TIL2ZDJ">Silk To Solder Mask (Clearance=0.1mm) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDCWE2Q1BJ4SAKELLOEE1ZFSGOOKZFF5QZYGCZSFI2O5BCNAP3JQSK">Silk to Silk (Clearance=0.1mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAAXZ4JVE4DPUJ2O10S5XYTXKQI2F43FXBSVDWKIFMCCBFYXEXUNH">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDFVHBNO41RD04HADTUJWKFUSQNFJ1JNIH4SNJOWLA3WK1CI2EWL1M">Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic'))</a></td>
+<td class="column2">54</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4NUH4CPZMTOLNP4Q1BTTXBXLQHTZADMINJE4BSGGG5YL0GPXZ1OE">Height Constraint (Min=0mm) (Max=100mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">94</td>
+</tr>
+</table><br><a name="ID4CRL4DHBNPH3ERRAQ1EBEKZFIPM402JM5UR01KICPY41TPZ3HSC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=0.5mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3168.994mil|Location2.X=3205.378mil|Location1.Y=4675.904mil|Location2.Y=4690.027mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3168.994mil|Location2.X=3205.378mil|Location1.Y=4675.904mil|Location2.Y=4690.027mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-11(44.914mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3139.159mil|Location2.X=3175.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3139.159mil|Location2.X=3175.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-11(44.914mm,93.491mm) on Multi-Layer And Track (42.374mm,93.491mm)(44.914mm,93.491mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4139.159mil|Location2.X=4175.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4139.159mil|Location2.X=4175.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-31(70.314mm,93.491mm) on Multi-Layer And Polygon Region (4 hole(s)) Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4139.159mil|Location2.X=4175.542mil|Location1.Y=4650.064mil|Location2.Y=4664.188mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4139.159mil|Location2.X=4175.542mil|Location1.Y=4650.064mil|Location2.Y=4664.188mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-31(70.314mm,93.491mm) on Multi-Layer And Track (70.314mm,90.951mm)(70.314mm,93.491mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4139.159mil|Location2.X=4175.542mil|Location1.Y=4550.064mil|Location2.Y=4564.188mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4139.159mil|Location2.X=4175.542mil|Location1.Y=4550.064mil|Location2.Y=4564.188mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-32(70.314mm,90.951mm) on Multi-Layer And Polygon Region (4 hole(s)) Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4139.159mil|Location2.X=4175.542mil|Location1.Y=4550.064mil|Location2.Y=4564.188mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4139.159mil|Location2.X=4175.542mil|Location1.Y=4550.064mil|Location2.Y=4564.188mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-32(70.314mm,90.951mm) on Multi-Layer And Track (70.314mm,82.682mm)(70.314mm,90.951mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4139.159mil|Location2.X=4175.542mil|Location1.Y=4557.938mil|Location2.Y=4572.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4139.159mil|Location2.X=4175.542mil|Location1.Y=4557.938mil|Location2.Y=4572.062mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-32(70.314mm,90.951mm) on Multi-Layer And Track (70.314mm,90.951mm)(70.314mm,93.491mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2839.159mil|Location2.X=2875.542mil|Location1.Y=4665.812mil|Location2.Y=4679.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2839.159mil|Location2.X=2875.542mil|Location1.Y=4665.812mil|Location2.Y=4679.936mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-5(37.294mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2839.159mil|Location2.X=2875.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2839.159mil|Location2.X=2875.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-5(37.294mm,93.491mm) on Multi-Layer And Track (34.754mm,93.491mm)(37.294mm,93.491mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2839.159mil|Location2.X=2875.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2839.159mil|Location2.X=2875.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-5(37.294mm,93.491mm) on Multi-Layer And Track (37.294mm,93.491mm)(39.834mm,93.491mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2968.994mil|Location2.X=3005.378mil|Location1.Y=4675.904mil|Location2.Y=4690.027mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2968.994mil|Location2.X=3005.378mil|Location1.Y=4675.904mil|Location2.Y=4690.027mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-7(39.834mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2939.159mil|Location2.X=2975.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2939.159mil|Location2.X=2975.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-7(39.834mm,93.491mm) on Multi-Layer And Track (37.294mm,93.491mm)(39.834mm,93.491mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2939.159mil|Location2.X=2975.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2939.159mil|Location2.X=2975.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-7(39.834mm,93.491mm) on Multi-Layer And Track (39.834mm,93.491mm)(42.374mm,93.491mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3039.159mil|Location2.X=3075.542mil|Location1.Y=4665.812mil|Location2.Y=4679.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3039.159mil|Location2.X=3075.542mil|Location1.Y=4665.812mil|Location2.Y=4679.936mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-9(42.374mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3039.159mil|Location2.X=3075.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3039.159mil|Location2.X=3075.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-9(42.374mm,93.491mm) on Multi-Layer And Track (39.834mm,93.491mm)(42.374mm,93.491mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3039.159mil|Location2.X=3075.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3039.159mil|Location2.X=3075.542mil|Location1.Y=4657.938mil|Location2.Y=4672.062mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.5mm) Between Pad P3-9(42.374mm,93.491mm) on Multi-Layer And Track (42.374mm,93.491mm)(44.914mm,93.491mm) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDRZ5SLDLMEGEVE2JNNGVNR0M5SJTQW0GCOZARM1LLQYFHNFJHHMEH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Short-Circuit Constraint (Allowed=No) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3122.668mil|Location2.X=3169.773mil|Location1.Y=4661.182mil|Location2.Y=4708.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3122.668mil|Location2.X=3169.773mil|Location1.Y=4661.182mil|Location2.Y=4708.286mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-11(44.914mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer Location : [X = 79.914mm][Y = 118.992mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3106.394mil|Location2.X=3174.234mil|Location1.Y=4631.08mil|Location2.Y=4698.92mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3106.394mil|Location2.X=3174.234mil|Location1.Y=4631.08mil|Location2.Y=4698.92mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-11(44.914mm,93.491mm) on Multi-Layer And Track (42.374mm,93.491mm)(44.914mm,93.491mm) on Top Layer Location : [X = 79.764mm][Y = 118.491mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4123.392mil|Location2.X=4190.8mil|Location1.Y=4646.108mil|Location2.Y=4713.517mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4123.392mil|Location2.X=4190.8mil|Location1.Y=4646.108mil|Location2.Y=4713.517mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-31(70.314mm,93.491mm) on Multi-Layer And Polygon Region (4 hole(s)) Bottom Layer Location : [X = 105.59mm][Y = 118.867mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4109.1mil|Location2.X=4183.341mil|Location1.Y=4618.036mil|Location2.Y=4692.277mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4109.1mil|Location2.X=4183.341mil|Location1.Y=4618.036mil|Location2.Y=4692.277mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-31(70.314mm,93.491mm) on Multi-Layer And Track (70.314mm,90.951mm)(70.314mm,93.491mm) on Top Layer Location : [X = 105.314mm][Y = 118.241mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4123.392mil|Location2.X=4190.8mil|Location1.Y=4516.483mil|Location2.Y=4583.892mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4123.392mil|Location2.X=4190.8mil|Location1.Y=4516.483mil|Location2.Y=4583.892mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-32(70.314mm,90.951mm) on Multi-Layer And Polygon Region (4 hole(s)) Bottom Layer Location : [X = 105.59mm][Y = 115.575mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4109.1mil|Location2.X=4183.341mil|Location1.Y=4518.036mil|Location2.Y=4592.277mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4109.1mil|Location2.X=4183.341mil|Location1.Y=4518.036mil|Location2.Y=4592.277mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-32(70.314mm,90.951mm) on Multi-Layer And Track (70.314mm,82.682mm)(70.314mm,90.951mm) on Top Layer Location : [X = 105.314mm][Y = 115.701mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4109.1mil|Location2.X=4183.341mil|Location1.Y=4537.723mil|Location2.Y=4611.964mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4109.1mil|Location2.X=4183.341mil|Location1.Y=4537.723mil|Location2.Y=4611.964mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-32(70.314mm,90.951mm) on Multi-Layer And Track (70.314mm,90.951mm)(70.314mm,93.491mm) on Top Layer Location : [X = 105.314mm][Y = 116.201mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2822.668mil|Location2.X=2869.773mil|Location1.Y=4661.182mil|Location2.Y=4708.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2822.668mil|Location2.X=2869.773mil|Location1.Y=4661.182mil|Location2.Y=4708.286mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-5(37.294mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer Location : [X = 72.294mm][Y = 118.992mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2806.394mil|Location2.X=2874.234mil|Location1.Y=4631.08mil|Location2.Y=4698.92mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2806.394mil|Location2.X=2874.234mil|Location1.Y=4631.08mil|Location2.Y=4698.92mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-5(37.294mm,93.491mm) on Multi-Layer And Track (34.754mm,93.491mm)(37.294mm,93.491mm) on Top Layer Location : [X = 72.144mm][Y = 118.491mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2818.207mil|Location2.X=2886.047mil|Location1.Y=4631.08mil|Location2.Y=4698.92mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2818.207mil|Location2.X=2886.047mil|Location1.Y=4631.08mil|Location2.Y=4698.92mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-5(37.294mm,93.491mm) on Multi-Layer And Track (37.294mm,93.491mm)(39.834mm,93.491mm) on Top Layer Location : [X = 72.444mm][Y = 118.491mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2922.668mil|Location2.X=2969.773mil|Location1.Y=4661.182mil|Location2.Y=4708.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2922.668mil|Location2.X=2969.773mil|Location1.Y=4661.182mil|Location2.Y=4708.286mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-7(39.834mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer Location : [X = 74.834mm][Y = 118.992mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2906.394mil|Location2.X=2974.234mil|Location1.Y=4631.08mil|Location2.Y=4698.92mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2906.394mil|Location2.X=2974.234mil|Location1.Y=4631.08mil|Location2.Y=4698.92mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-7(39.834mm,93.491mm) on Multi-Layer And Track (37.294mm,93.491mm)(39.834mm,93.491mm) on Top Layer Location : [X = 74.684mm][Y = 118.491mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2918.207mil|Location2.X=2986.047mil|Location1.Y=4631.08mil|Location2.Y=4698.92mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2918.207mil|Location2.X=2986.047mil|Location1.Y=4631.08mil|Location2.Y=4698.92mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-7(39.834mm,93.491mm) on Multi-Layer And Track (39.834mm,93.491mm)(42.374mm,93.491mm) on Top Layer Location : [X = 74.984mm][Y = 118.491mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3022.668mil|Location2.X=3069.773mil|Location1.Y=4661.182mil|Location2.Y=4708.286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3022.668mil|Location2.X=3069.773mil|Location1.Y=4661.182mil|Location2.Y=4708.286mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-9(42.374mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer Location : [X = 77.374mm][Y = 118.992mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3006.394mil|Location2.X=3074.234mil|Location1.Y=4631.08mil|Location2.Y=4698.92mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3006.394mil|Location2.X=3074.234mil|Location1.Y=4631.08mil|Location2.Y=4698.92mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-9(42.374mm,93.491mm) on Multi-Layer And Track (39.834mm,93.491mm)(42.374mm,93.491mm) on Top Layer Location : [X = 77.224mm][Y = 118.491mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3018.207mil|Location2.X=3086.047mil|Location1.Y=4631.08mil|Location2.Y=4698.92mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3018.207mil|Location2.X=3086.047mil|Location1.Y=4631.08mil|Location2.Y=4698.92mil|Absolute=True">Short-Circuit Constraint: Between Pad P3-9(42.374mm,93.491mm) on Multi-Layer And Track (42.374mm,93.491mm)(44.914mm,93.491mm) on Top Layer Location : [X = 77.524mm][Y = 118.491mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID40EHAOCMUHCFLADRGLA5CZ01UPWGW5SOVCUF2DIU3TI4BMEPLRYH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2610.724mil|Location2.X=4181.717mil|Location1.Y=4621.63mil|Location2.Y=4708.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2610.724mil|Location2.X=4181.717mil|Location1.Y=4621.63mil|Location2.Y=4708.37mil|Absolute=True">Un-Routed Net Constraint: Net 5V Between Pad P3-1(32.214mm,93.491mm) on Multi-Layer And Pad P3-31(70.314mm,93.491mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3010.724mil|Location2.X=3081.716mil|Location1.Y=4521.63mil|Location2.Y=4708.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3010.724mil|Location2.X=3081.716mil|Location1.Y=4521.63mil|Location2.Y=4708.37mil|Absolute=True">Un-Routed Net Constraint: Net DS3 Between Pad P3-10(42.374mm,90.951mm) on Multi-Layer And Pad P3-9(42.374mm,93.491mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3110.724mil|Location2.X=3181.716mil|Location1.Y=4521.63mil|Location2.Y=4708.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3110.724mil|Location2.X=3181.716mil|Location1.Y=4521.63mil|Location2.Y=4708.37mil|Absolute=True">Un-Routed Net Constraint: Net DS4 Between Pad P3-12(44.914mm,90.951mm) on Multi-Layer And Pad P3-11(44.914mm,93.491mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4110.725mil|Location2.X=4181.717mil|Location1.Y=4521.63mil|Location2.Y=4708.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4110.725mil|Location2.X=4181.717mil|Location1.Y=4521.63mil|Location2.Y=4708.37mil|Absolute=True">Un-Routed Net Constraint: Net 5V Between Pad P3-32(70.314mm,90.951mm) on Multi-Layer And Pad P3-31(70.314mm,93.491mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2810.724mil|Location2.X=2881.716mil|Location1.Y=4521.63mil|Location2.Y=4708.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2810.724mil|Location2.X=2881.716mil|Location1.Y=4521.63mil|Location2.Y=4708.37mil|Absolute=True">Un-Routed Net Constraint: Net DS1 Between Pad P3-6(37.294mm,90.951mm) on Multi-Layer And Pad P3-5(37.294mm,93.491mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2910.724mil|Location2.X=2981.716mil|Location1.Y=4521.63mil|Location2.Y=4708.37mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2910.724mil|Location2.X=2981.716mil|Location1.Y=4521.63mil|Location2.Y=4708.37mil|Absolute=True">Un-Routed Net Constraint: Net DS2 Between Pad P3-8(39.834mm,90.951mm) on Multi-Layer And Pad P3-7(39.834mm,93.491mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDAAXZ4JVE4DPUJ2O10S5XYTXKQI2F43FXBSVDWKIFMCCBFYXEXUNH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3123.035mil|Location2.X=3178.593mil|Location1.Y=4641.815mil|Location2.Y=4729.52mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3123.035mil|Location2.X=3178.593mil|Location1.Y=4641.815mil|Location2.Y=4729.52mil|Absolute=True">Net Antennae: Track (42.374mm,93.491mm)(44.914mm,93.491mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4123.035mil|Location2.X=4178.593mil|Location1.Y=4641.815mil|Location2.Y=4729.52mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4123.035mil|Location2.X=4178.593mil|Location1.Y=4641.815mil|Location2.Y=4729.52mil|Absolute=True">Net Antennae: Track (70.314mm,90.951mm)(70.314mm,93.491mm) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDFVHBNO41RD04HADTUJWKFUSQNFJ1JNIH4SNJOWLA3WK1CI2EWL1M"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic'))</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4629.682mil|Location1.Y=0mil|Location2.Y=6583.504mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4629.682mil|Location1.Y=0mil|Location2.Y=6583.504mil|Absolute=True">Room Definition: Between DIP Component P3-Display (49.994mm,92.221mm) on Top Layer And Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2061.811mil|Location1.Y=0mil|Location2.Y=3333.583mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2061.811mil|Location1.Y=0mil|Location2.Y=3333.583mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And SIP Component P2-BLE Module Header (16mm,41.92mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4984.252mil|Location1.Y=0mil|Location2.Y=2494.095mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4984.252mil|Location1.Y=0mil|Location2.Y=2494.095mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C10-22n0 (88mm,34.75mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3914.39mil|Location1.Y=0mil|Location2.Y=3991.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3914.39mil|Location1.Y=0mil|Location2.Y=3991.417mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C1-100n0 (60.725mm,72.282mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3262.638mil|Location1.Y=0mil|Location2.Y=4330.669mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3262.638mil|Location1.Y=0mil|Location2.Y=4330.669mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C11-100n0 (43.771mm,81.299mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2257.638mil|Location1.Y=0mil|Location2.Y=2195.669mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2257.638mil|Location1.Y=0mil|Location2.Y=2195.669mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C12-100n0 (18.244mm,27.07mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2882.638mil|Location1.Y=0mil|Location2.Y=4330.669mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2882.638mil|Location1.Y=0mil|Location2.Y=4330.669mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C13-100n0 (34.119mm,81.299mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3496.89mil|Location1.Y=0mil|Location2.Y=3991.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3496.89mil|Location1.Y=0mil|Location2.Y=3991.417mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C2-100n0 (50.121mm,72.282mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4948.819mil|Location1.Y=0mil|Location2.Y=3497.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4948.819mil|Location1.Y=0mil|Location2.Y=3497.244mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C3-3n3 (87mm,59.73mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3507.874mil|Location1.Y=0mil|Location2.Y=2625.984mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3507.874mil|Location1.Y=0mil|Location2.Y=2625.984mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C4-100n0 (50mm,38mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4331.89mil|Location1.Y=0mil|Location2.Y=3991.417mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4331.89mil|Location1.Y=0mil|Location2.Y=3991.417mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C5-100n0 (71.33mm,72.282mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4948.819mil|Location1.Y=0mil|Location2.Y=3014.173mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4948.819mil|Location1.Y=0mil|Location2.Y=3014.173mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C6-3n3 (87mm,47.46mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2586.614mil|Location1.Y=0mil|Location2.Y=2444.882mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2586.614mil|Location1.Y=0mil|Location2.Y=2444.882mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C7-100n0 (27mm,33mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3137.795mil|Location1.Y=0mil|Location2.Y=2444.882mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3137.795mil|Location1.Y=0mil|Location2.Y=2444.882mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C8-100n0 (41mm,33mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2265.354mil|Location1.Y=0mil|Location2.Y=1841.732mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2265.354mil|Location1.Y=0mil|Location2.Y=1841.732mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C9-47n0 (17.99mm,18.18mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4029.354mil|Location1.Y=0mil|Location2.Y=2217.205mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4029.354mil|Location1.Y=0mil|Location2.Y=2217.205mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component D1-BZX79-CXVX (61.402mm,29.992mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4029.354mil|Location1.Y=0mil|Location2.Y=2452.163mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4029.354mil|Location1.Y=0mil|Location2.Y=2452.163mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component D2-BZX79-CXVX (61.402mm,35.96mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4630.22mil|Location1.Y=0mil|Location2.Y=2219.705mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4630.22mil|Location1.Y=0mil|Location2.Y=2219.705mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component D3-BZX79-CXVX (76.664mm,30.056mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4630.22mil|Location1.Y=0mil|Location2.Y=2457.163mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4630.22mil|Location1.Y=0mil|Location2.Y=2457.163mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component D4-BZX79-CXVX (76.664mm,36.087mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3463.48mil|Location1.Y=0mil|Location2.Y=1996.024mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3463.48mil|Location1.Y=0mil|Location2.Y=1996.024mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component D5-1N4007 (46.534mm,24.149mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4964.63mil|Location1.Y=0mil|Location2.Y=2129.984mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4964.63mil|Location1.Y=0mil|Location2.Y=2129.984mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component D6-Green (88mm,26mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4371.362mil|Location1.Y=0mil|Location2.Y=1703.15mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4371.362mil|Location1.Y=0mil|Location2.Y=1703.15mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component J1-DC barrel jack (69.806mm,10.56mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3720.945mil|Location1.Y=0mil|Location2.Y=1623.937mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3720.945mil|Location1.Y=0mil|Location2.Y=1623.937mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component P1-Dual Banana Plugs (41.612mm,9.671mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3633.756mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3633.756mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R10-8k2 (56mm,51mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4027.456mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4027.456mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R11-3k9 (66mm,51mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4421.157mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4421.157mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R12-4k7 (76mm,51mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4158.69mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4158.69mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R13-3k9 (69.333mm,51mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4442.299mil|Location1.Y=0mil|Location2.Y=4121.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4442.299mil|Location1.Y=0mil|Location2.Y=4121.598mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R14-8k2 (76.537mm,73.425mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2852.819mil|Location1.Y=0mil|Location2.Y=1980.077mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2852.819mil|Location1.Y=0mil|Location2.Y=1980.077mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R15-33 (31.198mm,23.997mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=5090.448mil|Location1.Y=0mil|Location2.Y=1663.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=5090.448mil|Location1.Y=0mil|Location2.Y=1663.921mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R16-270 (93mm,11mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3043.204mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3043.204mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R17-39k0 (41mm,51mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2898.847mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2898.847mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R18-27k0 (37.333mm,51mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4054.551mil|Location1.Y=0mil|Location2.Y=1980.077mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4054.551mil|Location1.Y=0mil|Location2.Y=1980.077mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R1-82k (61.722mm,23.997mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2754.49mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2754.49mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R19-1k2 (33.667mm,51mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2610.134mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2610.134mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R20-39R0 (30mm,51mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2216.439mil|Location1.Y=0mil|Location2.Y=4577.307mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2216.439mil|Location1.Y=0mil|Location2.Y=4577.307mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R21-4k7 (20mm,85mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2058.959mil|Location1.Y=0mil|Location2.Y=4577.307mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2058.959mil|Location1.Y=0mil|Location2.Y=4577.307mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R22-820R0 (16mm,85mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2000mil|Location1.Y=0mil|Location2.Y=4577.307mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2000mil|Location1.Y=0mil|Location2.Y=4577.307mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R23-10k0 (12mm,85mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4618.008mil|Location1.Y=0mil|Location2.Y=1663.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4618.008mil|Location1.Y=0mil|Location2.Y=1663.921mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R3-1R (81mm,11mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4854.228mil|Location1.Y=0mil|Location2.Y=1663.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4854.228mil|Location1.Y=0mil|Location2.Y=1663.921mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R4-1R2 (87mm,11mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4027.299mil|Location1.Y=0mil|Location2.Y=4121.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4027.299mil|Location1.Y=0mil|Location2.Y=4121.598mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R5-22k0 (65.996mm,73.425mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3896.223mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3896.223mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R6-22k0 (62.667mm,51mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4289.924mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4289.924mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R7-4k7 (72.667mm,51mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3764.989mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3764.989mil|Location1.Y=0mil|Location2.Y=3238.724mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R8-18k0 (59.333mm,51mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3612.299mil|Location1.Y=0mil|Location2.Y=4121.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3612.299mil|Location1.Y=0mil|Location2.Y=4121.598mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R9-22k0 (55.455mm,73.425mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2456.496mil|Location1.Y=0mil|Location2.Y=2850.197mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2456.496mil|Location1.Y=0mil|Location2.Y=2850.197mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_5V-5003 (26mm,46mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4858.071mil|Location1.Y=0mil|Location2.Y=3676.969mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4858.071mil|Location1.Y=0mil|Location2.Y=3676.969mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_GND1-5003 (87mm,67mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4858.071mil|Location1.Y=0mil|Location2.Y=3873.819mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=4858.071mil|Location1.Y=0mil|Location2.Y=3873.819mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_GND2-5003 (87mm,72mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3637.598mil|Location1.Y=0mil|Location2.Y=3519.488mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=3637.598mil|Location1.Y=0mil|Location2.Y=3519.488mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_Offset-5003 (56mm,63mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2220.276mil|Location1.Y=0mil|Location2.Y=4779.331mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2220.276mil|Location1.Y=0mil|Location2.Y=4779.331mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_Tx-5003 (20mm,95mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=5133.661mil|Location1.Y=0mil|Location2.Y=3015.157mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=5133.661mil|Location1.Y=0mil|Location2.Y=3015.157mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_Vif-5003 (94mm,50.19mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=5133.662mil|Location1.Y=0mil|Location2.Y=3283.268mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=5133.662mil|Location1.Y=0mil|Location2.Y=3283.268mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_Vvf-5003 (94mm,57mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2456.496mil|Location1.Y=0mil|Location2.Y=2653.346mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2456.496mil|Location1.Y=0mil|Location2.Y=2653.346mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_Vzc-5003 (26mm,41mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2837.795mil|Location1.Y=0mil|Location2.Y=2346.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=2837.795mil|Location1.Y=0mil|Location2.Y=2346.457mil|Absolute=True">Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component U4-L78L05ACZ (34mm,33mm) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

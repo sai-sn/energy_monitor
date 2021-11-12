@@ -1,0 +1,145 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\shrey\Documents\GitHub\ee209-2020-project-team37\FInalImplementation\PCB\PCB_FINAL_REAL\Final_PCB.PcbDoc
+Date     : 21/10/2020
+Time     : 12:29:57 PM
+
+Processing Rule : Clearance Constraint (Gap=0.5mm) (All),(All)
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-11(44.914mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-11(44.914mm,93.491mm) on Multi-Layer And Track (42.374mm,93.491mm)(44.914mm,93.491mm) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-31(70.314mm,93.491mm) on Multi-Layer And Polygon Region (4 hole(s)) Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-31(70.314mm,93.491mm) on Multi-Layer And Track (70.314mm,90.951mm)(70.314mm,93.491mm) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-32(70.314mm,90.951mm) on Multi-Layer And Polygon Region (4 hole(s)) Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-32(70.314mm,90.951mm) on Multi-Layer And Track (70.314mm,82.682mm)(70.314mm,90.951mm) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-32(70.314mm,90.951mm) on Multi-Layer And Track (70.314mm,90.951mm)(70.314mm,93.491mm) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-5(37.294mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-5(37.294mm,93.491mm) on Multi-Layer And Track (34.754mm,93.491mm)(37.294mm,93.491mm) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-5(37.294mm,93.491mm) on Multi-Layer And Track (37.294mm,93.491mm)(39.834mm,93.491mm) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-7(39.834mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-7(39.834mm,93.491mm) on Multi-Layer And Track (37.294mm,93.491mm)(39.834mm,93.491mm) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-7(39.834mm,93.491mm) on Multi-Layer And Track (39.834mm,93.491mm)(42.374mm,93.491mm) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-9(42.374mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-9(42.374mm,93.491mm) on Multi-Layer And Track (39.834mm,93.491mm)(42.374mm,93.491mm) on Top Layer 
+   Violation between Clearance Constraint: (Collision < 0.5mm) Between Pad P3-9(42.374mm,93.491mm) on Multi-Layer And Track (42.374mm,93.491mm)(44.914mm,93.491mm) on Top Layer 
+Rule Violations :16
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+   Violation between Short-Circuit Constraint: Between Pad P3-11(44.914mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer Location : [X = 79.914mm][Y = 118.992mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-11(44.914mm,93.491mm) on Multi-Layer And Track (42.374mm,93.491mm)(44.914mm,93.491mm) on Top Layer Location : [X = 79.764mm][Y = 118.491mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-31(70.314mm,93.491mm) on Multi-Layer And Polygon Region (4 hole(s)) Bottom Layer Location : [X = 105.59mm][Y = 118.867mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-31(70.314mm,93.491mm) on Multi-Layer And Track (70.314mm,90.951mm)(70.314mm,93.491mm) on Top Layer Location : [X = 105.314mm][Y = 118.241mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-32(70.314mm,90.951mm) on Multi-Layer And Polygon Region (4 hole(s)) Bottom Layer Location : [X = 105.59mm][Y = 115.575mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-32(70.314mm,90.951mm) on Multi-Layer And Track (70.314mm,82.682mm)(70.314mm,90.951mm) on Top Layer Location : [X = 105.314mm][Y = 115.701mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-32(70.314mm,90.951mm) on Multi-Layer And Track (70.314mm,90.951mm)(70.314mm,93.491mm) on Top Layer Location : [X = 105.314mm][Y = 116.201mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-5(37.294mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer Location : [X = 72.294mm][Y = 118.992mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-5(37.294mm,93.491mm) on Multi-Layer And Track (34.754mm,93.491mm)(37.294mm,93.491mm) on Top Layer Location : [X = 72.144mm][Y = 118.491mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-5(37.294mm,93.491mm) on Multi-Layer And Track (37.294mm,93.491mm)(39.834mm,93.491mm) on Top Layer Location : [X = 72.444mm][Y = 118.491mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-7(39.834mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer Location : [X = 74.834mm][Y = 118.992mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-7(39.834mm,93.491mm) on Multi-Layer And Track (37.294mm,93.491mm)(39.834mm,93.491mm) on Top Layer Location : [X = 74.684mm][Y = 118.491mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-7(39.834mm,93.491mm) on Multi-Layer And Track (39.834mm,93.491mm)(42.374mm,93.491mm) on Top Layer Location : [X = 74.984mm][Y = 118.491mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-9(42.374mm,93.491mm) on Multi-Layer And Polygon Region (95 hole(s)) Bottom Layer Location : [X = 77.374mm][Y = 118.992mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-9(42.374mm,93.491mm) on Multi-Layer And Track (39.834mm,93.491mm)(42.374mm,93.491mm) on Top Layer Location : [X = 77.224mm][Y = 118.491mm]
+   Violation between Short-Circuit Constraint: Between Pad P3-9(42.374mm,93.491mm) on Multi-Layer And Track (42.374mm,93.491mm)(44.914mm,93.491mm) on Top Layer Location : [X = 77.524mm][Y = 118.491mm]
+Rule Violations :16
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+   Violation between Un-Routed Net Constraint: Net 5V Between Pad P3-1(32.214mm,93.491mm) on Multi-Layer And Pad P3-31(70.314mm,93.491mm) on Multi-Layer 
+   Violation between Un-Routed Net Constraint: Net DS3 Between Pad P3-10(42.374mm,90.951mm) on Multi-Layer And Pad P3-9(42.374mm,93.491mm) on Multi-Layer 
+   Violation between Un-Routed Net Constraint: Net DS4 Between Pad P3-12(44.914mm,90.951mm) on Multi-Layer And Pad P3-11(44.914mm,93.491mm) on Multi-Layer 
+   Violation between Un-Routed Net Constraint: Net 5V Between Pad P3-32(70.314mm,90.951mm) on Multi-Layer And Pad P3-31(70.314mm,93.491mm) on Multi-Layer 
+   Violation between Un-Routed Net Constraint: Net DS1 Between Pad P3-6(37.294mm,90.951mm) on Multi-Layer And Pad P3-5(37.294mm,93.491mm) on Multi-Layer 
+   Violation between Un-Routed Net Constraint: Net DS2 Between Pad P3-8(39.834mm,90.951mm) on Multi-Layer And Pad P3-7(39.834mm,93.491mm) on Multi-Layer 
+Rule Violations :6
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.5mm) (Max=10mm) (Preferred=1mm) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.5mm) (Max=10mm) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.254mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=0.1mm) (IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=0.1mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mm) (All)
+   Violation between Net Antennae: Track (42.374mm,93.491mm)(44.914mm,93.491mm) on Top Layer 
+   Violation between Net Antennae: Track (70.314mm,90.951mm)(70.314mm,93.491mm) on Top Layer 
+Rule Violations :2
+
+Processing Rule : Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic'))
+   Violation between Room Definition: Between DIP Component P3-Display (49.994mm,92.221mm) on Top Layer And Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And SIP Component P2-BLE Module Header (16mm,41.92mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C10-22n0 (88mm,34.75mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C1-100n0 (60.725mm,72.282mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C11-100n0 (43.771mm,81.299mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C12-100n0 (18.244mm,27.07mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C13-100n0 (34.119mm,81.299mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C2-100n0 (50.121mm,72.282mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C3-3n3 (87mm,59.73mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C4-100n0 (50mm,38mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C5-100n0 (71.33mm,72.282mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C6-3n3 (87mm,47.46mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C7-100n0 (27mm,33mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C8-100n0 (41mm,33mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component C9-47n0 (17.99mm,18.18mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component D1-BZX79-CXVX (61.402mm,29.992mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component D2-BZX79-CXVX (61.402mm,35.96mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component D3-BZX79-CXVX (76.664mm,30.056mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component D4-BZX79-CXVX (76.664mm,36.087mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component D5-1N4007 (46.534mm,24.149mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component D6-Green (88mm,26mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component J1-DC barrel jack (69.806mm,10.56mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component P1-Dual Banana Plugs (41.612mm,9.671mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R10-8k2 (56mm,51mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R11-3k9 (66mm,51mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R12-4k7 (76mm,51mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R13-3k9 (69.333mm,51mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R14-8k2 (76.537mm,73.425mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R15-33 (31.198mm,23.997mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R16-270 (93mm,11mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R17-39k0 (41mm,51mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R18-27k0 (37.333mm,51mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R1-82k (61.722mm,23.997mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R19-1k2 (33.667mm,51mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R20-39R0 (30mm,51mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R21-4k7 (20mm,85mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R22-820R0 (16mm,85mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R23-10k0 (12mm,85mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R3-1R (81mm,11mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R4-1R2 (87mm,11mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R5-22k0 (65.996mm,73.425mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R6-22k0 (62.667mm,51mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R7-4k7 (72.667mm,51mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R8-18k0 (59.333mm,51mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component R9-22k0 (55.455mm,73.425mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_5V-5003 (26mm,46mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_GND1-5003 (87mm,67mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_GND2-5003 (87mm,72mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_Offset-5003 (56mm,63mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_Tx-5003 (20mm,95mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_Vif-5003 (94mm,50.19mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_Vvf-5003 (94mm,57mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component TP_Vzc-5003 (26mm,41mm) on Top Layer 
+   Violation between Room Definition: Between Room Final_Schematic (Bounding Region = (0mm, 0mm, 50.8mm, 25.4mm) (InComponentClass('Final_Schematic')) And Small Component U4-L78L05ACZ (34mm,33mm) on Top Layer 
+Rule Violations :54
+
+Processing Rule : Height Constraint (Min=0mm) (Max=100mm) (Prefered=12.7mm) (All)
+Rule Violations :0
+
+
+Violations Detected : 94
+Waived Violations : 0
+Time Elapsed        : 00:00:02
